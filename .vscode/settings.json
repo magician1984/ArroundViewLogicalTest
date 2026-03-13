@@ -1,5 +1,14 @@
 {
     "editor.formatOnSave": true,
     "C_Cpp.clang_format_style": "file",
-    "editor.defaultFormatter": "ms-vscode.cpptools"
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "C_Cpp.codeAnalysis.runAutomatically": true,
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [
+        "bugprone-*",      // 检测逻辑漏洞
+        "modernize-*",     // 建议使用 C++17 新特性（如用 variant 代替 union）
+        "readability-*",   // 代码可读性检查
+        "google-*"         // 匹配 AOSP 使用的 Google 编程规范
+    ],
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
 }

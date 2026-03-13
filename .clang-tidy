@@ -1,0 +1,27 @@
+---
+# 檢查規則配置
+Checks: >
+  -*,
+  bugprone-*,
+  modernize-*,
+  readability-*,
+  google-*,
+  cppcoreguidelines-*,
+  performance-*,
+  -google-readability-todo,
+  -modernize-use-trailing-return-type,
+  -cppcoreguidelines-pro-type-member-init
+
+# 遇到警告即視為錯誤（這在 AOSP CI 中很常見，強制開發者修正）
+WarningsAsErrors: 'bugprone-*,google-build-using-namespace'
+
+CheckOptions:
+  - key:             readability-identifier-naming.ClassCase
+    value:           PascalCase
+  - key:             readability-identifier-naming.StructCase
+    value:           PascalCase
+  - key:             readability-identifier-naming.FunctionCase
+    value:           camelCase
+  - key:             modernize-use-std-variant.Strict
+    value:           true
+---
