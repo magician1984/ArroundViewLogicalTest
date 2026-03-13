@@ -1,4 +1,17 @@
 BasedOnStyle: Google
+
 IndentWidth: 4
+
+AllowShortFunctionsOnASingleLine: Inline
+
+PointerAlignment: Left
+
 ColumnLimit: 100
-AllowShortFunctionsOnASingleLine: Empty
+
+IncludeBlocks: Preserve
+
+NamespaceIndentation: None
+
+ConstructorInitializerIndentWidth: 4
+
+AlignConsecutiveAssignments: true
