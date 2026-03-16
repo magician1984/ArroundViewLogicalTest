@@ -1,0 +1,14 @@
+#ifndef AVM_CAMERA_LOCATION
+#define AVM_CAMERA_LOCATION
+
+#include <cstdint>
+
+enum class AvmCameraLocation : uint8_t {
+    CAMERA_LOCATION_INVALID,
+    CAMERA_LOCATION_FRONT,
+    CAMERA_LOCATION_REAR,
+    CAMERA_LOCATION_LEFT,
+    CAMERA_LOCATION_RIGHT
+};
+
+#endif /* AVM_CAMERA_LOCATION */
