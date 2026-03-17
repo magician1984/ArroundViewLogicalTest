@@ -4,13 +4,13 @@
 #include <cstdint>
 
 enum class AvmViewMode_e : uint8_t {
-    AVM_VIEW_MODE_NONE,
-    AVM_VIEW_MODE_FREE,
-    AVM_VIEW_MODE_REAR,
-    AVM_VIEW_MODE_FRONT,
-    AVM_VIEW_MODE_LEFT,
-    AVM_VIEW_MODE_RIGHT,
-    AVM_VIEW_MODE_ALL
+    kNone  = 0,
+    kFree  = 1,
+    kRear  = 2,
+    kFront = 3,
+    kLeft  = 4,
+    kRight = 5,
+    kAll   = 6
 };
 
 #endif /* AVM_VIEW_MODE */

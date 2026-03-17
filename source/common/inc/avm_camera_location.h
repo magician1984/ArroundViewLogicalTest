@@ -4,11 +4,11 @@
 #include <cstdint>
 
 enum class AvmCameraLocation : uint8_t {
-    CAMERA_LOCATION_INVALID,
-    CAMERA_LOCATION_FRONT,
-    CAMERA_LOCATION_REAR,
-    CAMERA_LOCATION_LEFT,
-    CAMERA_LOCATION_RIGHT
+    kInvalid = 0,
+    kFront   = 1,
+    kRear    = 2,
+    kLeft    = 3,
+    kRight   = 4
 };
 
 #endif /* AVM_CAMERA_LOCATION */

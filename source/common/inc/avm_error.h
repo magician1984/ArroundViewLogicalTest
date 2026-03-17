@@ -3,10 +3,6 @@
 
 #include <cstdint>
 
-enum class AvmError_e : uint8_t {
-    AVM_ERROR_NONE,
-    AVM_ERROR_CAMERA_FAILURE,
-    AVM_ERROR_MODEL_FAILURE
-};
+enum class AvmError_e : uint8_t { kNone = 0, kCameraFailure = 1, kModelFailure = 2 };
 
 #endif /* AVM_ERROR */
