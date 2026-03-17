@@ -4,12 +4,9 @@
 #include "avm_error.h"
 #include "avm_view_mode.h"
 
-enum class AvmStateType_e : uint8_t {
-    AVM_STATE_NONE,
-    AVM_STATE_READY,
-    AVM_STATE_RUNNING,
-    AVM_STATE_ERROR
-};
+#include <variant>
+
+enum class AvmStateType_e : uint8_t { kNone = 0, kReady, kRunning, kError };
 
 struct AvmStateNone_t {
     uint64_t timestamp;
@@ -35,12 +32,7 @@ struct AvmStateError_t {
 
 struct AvmState_t {
     AvmStateType_e type;
-    union {
-        AvmStateNone_t none;
-        AvmStateReady_t ready;
-        AvmStateRunning_t running;
-        AvmStateError_t error;
-    } state;
+    std::variant<AvmStateNone_t, AvmStateReady_t, AvmStateRunning_t, AvmStateError_t> data;
 };
 
 #endif /* AVM_STATES */
