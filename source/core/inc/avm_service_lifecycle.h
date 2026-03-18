@@ -17,7 +17,14 @@ enum class AvmServiceLifecycle_e : uint8_t {
     kStarted,
     kStopping,
     kReleasing,
-    kReleased
+    kReleased,
+    kError
+};
+
+struct AvmServiceLifecycleResult_t {
+    AvmServiceLifecycle_e current;
+    AvmServiceLifecycle_e next;
+    bool isSucceed;
 };
 
 #endif /* AVM_SERVICE_LIFECYCLE */

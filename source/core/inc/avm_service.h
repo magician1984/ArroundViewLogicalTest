@@ -32,29 +32,33 @@ struct AvmServicePreviewParems_t {
 
 class AvmService {
    public:
-    explicit AvmService(AvmServiceConfigure_t configure) : configure_(configure) {}
-    ~AvmService() = default;
+    explicit AvmService(AvmServiceConfigure_t configure);
+    ~AvmService();
 
-    virtual auto Init() -> AvmServiceResult_t                           = 0;
-    virtual auto Release() -> AvmServiceResult_t                        = 0;
-    virtual auto Start(AvmServiceCanvas_t canvas) -> AvmServiceResult_t = 0;
-    virtual auto Stop() -> AvmServiceResult_t                           = 0;
+    auto Init() -> AvmServiceResult_t;
+    auto Release() -> AvmServiceResult_t;
+    auto Start(AvmServiceCanvas_t canvas) -> AvmServiceResult_t;
+    auto Stop() -> AvmServiceResult_t;
 
     virtual auto UpdatePreviewParams(AvmServicePreviewParems_t params) -> AvmServiceResult_t = 0;
     virtual auto GetCameraDeviceInfoList() -> AvmServiceResult_t                             = 0;
 
    protected:
-    auto GetConfigure() -> AvmServiceConfigure_t { return configure_; }
-    auto GetLifecycle() -> AvmServiceLifecycle_e { return currentLifecycle_; }
-    auto GetPreviousLifecycle() -> AvmServiceLifecycle_e { return previousLifecycle_; }
-    auto SetLifecycle(AvmServiceLifecycle_e lifecycle) -> bool {
-        if (currentLifecycle_ == lifecycle) {
-            return false;
-        }
-        previousLifecycle_ = currentLifecycle_;
-        currentLifecycle_  = lifecycle;
-        return true;
-    }
+    auto GetConfigure() -> AvmServiceConfigure_t;
+    auto GetLifecycle() -> AvmServiceLifecycle_e;
+    auto GetPreviousLifecycle() -> AvmServiceLifecycle_e;
+
+    virtual auto OnChangeLifecycle(AvmServiceLifecycle_e from, AvmServiceLifecycle_e to)
+        -> bool                                                                            = 0;
+    virtual auto OnNone(AvmServiceLifecycle_e from) -> AvmServiceLifecycleResult_t         = 0;
+    virtual auto OnInitializing(AvmServiceLifecycle_e from) -> AvmServiceLifecycleResult_t = 0;
+    virtual auto OnInitialized(AvmServiceLifecycle_e from) -> AvmServiceLifecycleResult_t  = 0;
+    virtual auto OnStarting(AvmServiceLifecycle_e from) -> AvmServiceLifecycleResult_t     = 0;
+    virtual auto OnStarted(AvmServiceLifecycle_e from) -> AvmServiceLifecycleResult_t      = 0;
+    virtual auto OnStopping(AvmServiceLifecycle_e from) -> AvmServiceLifecycleResult_t     = 0;
+    virtual auto OnReleasing(AvmServiceLifecycle_e from) -> AvmServiceLifecycleResult_t    = 0;
+    virtual auto OnReleased(AvmServiceLifecycle_e from) -> AvmServiceLifecycleResult_t     = 0;
+    virtual auto OnError(AvmServiceLifecycle_e from) -> AvmServiceLifecycleResult_t        = 0;
 
    private:
     AvmServiceConfigure_t configure_;
